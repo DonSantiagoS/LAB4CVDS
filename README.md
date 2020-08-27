@@ -1,4 +1,6 @@
 ### Escuela Colombiana de Ingeniería
+#### Andres Cubillos
+#### Santiago Buitrago
 
 ### Procesos de Desarrollo de Software
 
