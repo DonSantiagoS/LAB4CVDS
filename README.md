@@ -3,7 +3,7 @@
 ## **CVDS-1**
 ### **Ciclos de Vida del Desarrollo de Software**
 
-![](https://github.com/DonSantiagoS/LAB2CVDS/blob/master/Imagenes/Logo.png)
+![](https://github.com/DonSantiagoS/LAB2CVDS/blob/master/Imagenes/Logo.PNG)
 
 ### Desarrollo Dirigido por Pruebas + DIP + DI + Contenedores Livianos
 
@@ -40,7 +40,7 @@ Lo anterior, se traduce en el siguiente modelo, donde se aplica el
 principio de inversión de dependencias:
 
 
-![](img/model.png)
+![](img/model.PNG)
 
 
 ### Parte I
@@ -51,36 +51,36 @@ principio de inversión de dependencias:
 	git clone https://github.com/PDSW-ECI/LigthwayContainer_DependencyInjection_Hangman.git	
 ```
 
-![](img/evidencia1.png)
+![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/evidencia1.PNG)
    
 2. A partir del código existente, se implementa sólo los cascarones del
    modelo antes indicado.
   
-   ![](img/bonuscascaron.png)
+   ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/bonuscascaron.PNG)
    
    
-   ![](img/originalcascaron.png)
+   ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/originalcascaron.PNG)
    
    
-   ![](img/powercascaron.png)
+   ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/powercascaron.PNG)
    
 
 3. Especificación de los métodos calculateScore (de las tres
    variantes de GameScore)
-   ![](img/bonusespecificacion.png)
+   ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/bonusespecificacion.PNG)
    
    
-   ![](img/originalespecificacion.png)
+   ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/originalespecificacion.PNG)
    
    
-   ![](img/powerespecificacion.png)
+   ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/powerespecificacion.PNG)
 
 4. Commit de lo realizado hasta ahora. Desde la terminal:
-	![](img/primercommit.png)
+	![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/primercommit.PNG)
 
 5. Actualizacion el archivo `pom.xml` incluyendo dependencias para la ultima versión de JUnit y la versión del compilador de Java a la versión 8 .
 
-   ![](img/dependencias.png)
+   ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/dependencias.PNG)
 
 6. Teniendo en cuenta dichas especificaciones, en la clase donde se
    implementarán las pruebas (GameScoreTest), en los
@@ -134,11 +134,11 @@ Incorpore el Contenedor Liviano Guice dentro del proyecto:
 
 * Revise las dependencias necesarias en el pom.xml.
 Esta dependencia es la necesaria para poder utiizar de manera correcta google guice 
-![](img/evidencia2.png)
+![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/evidencia2.PNG)
 
 * Modifique la inyección de dependencias utilizando guice en lugar del
   método fábrica..
-  ![](img/evidencia3.png)
+  ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/evidencia3.PNG)
   Esto se realizo en el metodo main de la clase SwingProject
   
   En la clase HangmanFactoryServices se realizo la inyeccion de dependencias codificando los binds, quedando asi:
@@ -212,20 +212,14 @@ y finalmente en las tres clases de idioma, en sus respectivas clases
 	@Inject
     public French(){    
     }
-	
 
 ```
-private int puntaje;
-	
-	@Inject
-	public PowerBonusScore(){
-		puntaje = 0;	
-
   
-Por ultimo al compilarlo es posible evidenciar que esta funcional
+Por ultimo al compilarlo es posible evidenciar que esta funcionall
 
-![](img/funciona.png)
-![](img/funciona2.png)
+![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/funciona.PNG)
+
+![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/funciona2.PNG)
 
 
 ##### Autores:
