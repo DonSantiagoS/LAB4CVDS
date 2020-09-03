@@ -95,29 +95,29 @@ principio de inversión de dependencias:
    ```
    //original score
 	@Test
-    public void DeberiaLanzarExcepcion1(){
+    public void DeberiaLanzarExcepcion1() throws GameScoreException {
         GameScore puntaje= new OriginalScore();
 		try{
-		 puntaje.calculateScore(-5,-4);
+		 int score= puntaje.calculateScore(-5,-4);
          int fail= 500/0;
 		 }
       catch(Exception ex){
        }
     }
 	@Test
-    public void DeberiaCalcularPuntaje1(){
+    public void DeberiaCalcularPuntaje1() throws GameScoreException{
 		GameScore puntaje= new OriginalScore();
-        puntaje.calculateScore(2,5);
-        Assert.assertTrue(puntaje== 50);
+        int score= puntaje.calculateScore(2,5);
+        Assert.assertEquals(score,50);
     }
     
     
     //bonus score
 	@Test
-    public void DeberiaLanzarExcepcion2(){
+    public void DeberiaLanzarExcepcion2() throws GameScoreException{
         GameScore puntaje= new BonusScore();
 		try{
-		 puntaje.calculateScore(-1,-9);
+		 int score= puntaje.calculateScore(-1,-9);
          int fail= 500/0;
 		 }
       catch(Exception ex){
@@ -125,18 +125,19 @@ principio de inversión de dependencias:
       
     }
 	@Test
-    public void DeberiaCalcularPuntaje3(){
+    public void DeberiaCalcularPuntaje3() throws GameScoreException{
 		GameScore puntaje= new BonusScore();
-        puntaje.calculateScore(3,5);
-        Assert.assertTrue(puntaje== 5);
+        int score= puntaje.calculateScore(3,5);
+        Assert.assertEquals(score,5);
     }
+    
     
     //power score
 	@Test
-    public void DeberiaLanzarExcepcion3(){
+    public void DeberiaLanzarExcepcion3() throws GameScoreException{
         GameScore puntaje= new PowerScore();
 		try{
-		 puntaje.calculateScore(-2,-2);
+		 int score= puntaje.calculateScore(-2,-2);
          int fail= 500/0;
 		 }
       catch(Exception ex){
@@ -144,10 +145,10 @@ principio de inversión de dependencias:
       
     }
 	@Test
-    public void DeberiaCalcularPuntaje5(){
+    public void DeberiaCalcularPuntaje5() throws GameScoreException{
 		GameScore puntaje= new PowerScore();
-        puntaje.calculateScore(2,3);
-        Assert.assertTrue(puntaje==50 );
+        int score= puntaje.calculateScore(2,3);
+        Assert.assertEquals(score,6);
     }
     ```
 
