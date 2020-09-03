@@ -44,25 +44,36 @@ principio de inversión de dependencias:
 
 ### Parte I
 
-1. Clone el proyecto (no lo descargue!).
+
    
-2. A partir del código existente, implemente sólo los cascarones del
+2. A partir del código existente, se implementa sólo los cascarones del
    modelo antes indicado.
-
-3. Haga la especificación de los métodos calculateScore (de las tres
-   variantes de GameScore), a partir de las especificaciones
-   generales dadas anteriormente. Recuerde tener en cuenta: @pre,
-   @pos, @param, @throws.
-
-4. Haga commit de lo realizado hasta ahora. Desde la terminal:
-
-	```bash		
-	git add .			
-	git commit -m "especificación métodos"
-	```
-
-5. Actualice el archivo `pom.xml` e incluya las dependencias para la ultima versión de JUnit y la versión del compilador de Java a la versión 8 .
+  
+   ![](img/bonuscascaron.png)
    
+   
+   ![](img/originalcascaron.png)
+   
+   
+   ![](img/powercascaron.png)
+   
+
+3. Especificación de los métodos calculateScore (de las tres
+   variantes de GameScore)
+   ![](img/bonusespecificacion.png)
+   
+   
+   ![](img/originalespecificacion.png)
+   
+   
+   ![](img/powerespecificacion.png)
+
+4. Commit de lo realizado hasta ahora. Desde la terminal:
+	![](img/primercommit.png)
+
+5. Actualizacion el archivo `pom.xml` incluyendo dependencias para la ultima versión de JUnit y la versión del compilador de Java a la versión 8 .
+
+   ![](img/dependencias.png)
 
 6. Teniendo en cuenta dichas especificaciones, en la clase donde se
    implementarán las pruebas (GameScoreTest), en los
