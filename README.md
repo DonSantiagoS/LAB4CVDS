@@ -49,7 +49,13 @@ principio de inversión de dependencias:
 2. A partir del código existente, se implementa sólo los cascarones del
    modelo antes indicado.
   
-   ![](img/cascarones.png)
+   ![](img/bonuscascaron.png)
+   
+   
+   ![](img/originalcascaron.png)
+   
+   
+   ![](img/powercascaron.png)
    
 
 3. Especificación de los métodos calculateScore (de las tres
