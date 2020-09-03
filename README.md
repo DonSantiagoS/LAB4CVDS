@@ -3,7 +3,7 @@
 ## **CVDS-1**
 ### **Ciclos de Vida del Desarrollo de Software**
 
-![](https://github.com/DonSantiagoS/LAB2CVDS/blob/master/Imagenes/Logo.PNG)
+![](https://github.com/DonSantiagoS/LAB2CVDS/blob/master/Imagenes/Logo.png)
 
 ### Desarrollo Dirigido por Pruebas + DIP + DI + Contenedores Livianos
 
@@ -40,7 +40,7 @@ Lo anterior, se traduce en el siguiente modelo, donde se aplica el
 principio de inversión de dependencias:
 
 
-![](img/model.PNG)
+![](img/model.png)
 
 
 ### Parte I
@@ -51,36 +51,36 @@ principio de inversión de dependencias:
 	git clone https://github.com/PDSW-ECI/LigthwayContainer_DependencyInjection_Hangman.git	
 ```
 
-![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/evidencia1.PNG)
+![](img/evidencia1.png)
    
 2. A partir del código existente, se implementa sólo los cascarones del
    modelo antes indicado.
   
-   ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/bonuscascaron.PNG)
+   ![](img/bonuscascaron.PNG)
    
    
-   ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/originalcascaron.PNG)
+   ![](img/originalcascaron.PNG)
    
    
-   ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/powercascaron.PNG)
+   ![](img/powercascaron.PNG)
    
 
 3. Especificación de los métodos calculateScore (de las tres
    variantes de GameScore)
-   ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/bonusespecificacion.PNG)
+   ![](img/bonusespecificacion.PNG)
    
    
-   ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/originalespecificacion.PNG)
+   ![](img/originalespecificacion.PNG)
    
    
-   ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/powerespecificacion.PNG)
+   ![](img/powerespecificacion.PNG)
 
 4. Commit de lo realizado hasta ahora. Desde la terminal:
-	![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/primercommit.PNG)
+	![](img/primercommit.PNG)
 
 5. Actualizacion el archivo `pom.xml` incluyendo dependencias para la ultima versión de JUnit y la versión del compilador de Java a la versión 8 .
 
-   ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/dependencias.PNG)
+   ![](img/dependencias.PNG)
 
 6. Teniendo en cuenta dichas especificaciones, en la clase donde se
    implementarán las pruebas (GameScoreTest), en los
@@ -92,6 +92,64 @@ principio de inversión de dependencias:
    
 7. Para cada clase de equivalencia y condición de frontera, implemente
    una prueba utilizando JUnit.
+   ```
+   //original score
+	@Test
+    public void DeberiaLanzarExcepcion1(){
+        GameScore puntaje= new OriginalScore();
+		try{
+		 puntaje.calculateScore(-5,-4);
+         int fail= 500/0;
+		 }
+      catch(Exception ex){
+       }
+    }
+	@Test
+    public void DeberiaCalcularPuntaje1(){
+		GameScore puntaje= new OriginalScore();
+        puntaje.calculateScore(2,5);
+        Assert.assertTrue(puntaje== 50);
+    }
+    
+    
+    //bonus score
+	@Test
+    public void DeberiaLanzarExcepcion2(){
+        GameScore puntaje= new BonusScore();
+		try{
+		 puntaje.calculateScore(-1,-9);
+         int fail= 500/0;
+		 }
+      catch(Exception ex){
+       }
+      
+    }
+	@Test
+    public void DeberiaCalcularPuntaje3(){
+		GameScore puntaje= new BonusScore();
+        puntaje.calculateScore(3,5);
+        Assert.assertTrue(puntaje== 5);
+    }
+    
+    //power score
+	@Test
+    public void DeberiaLanzarExcepcion3(){
+        GameScore puntaje= new PowerScore();
+		try{
+		 puntaje.calculateScore(-2,-2);
+         int fail= 500/0;
+		 }
+      catch(Exception ex){
+       }
+      
+    }
+	@Test
+    public void DeberiaCalcularPuntaje5(){
+		GameScore puntaje= new PowerScore();
+        puntaje.calculateScore(2,3);
+        Assert.assertTrue(puntaje==50 );
+    }
+    ```
 
 8. Haga commit de lo realizado hasta ahora. Desde la terminal:
 
@@ -102,6 +160,55 @@ principio de inversión de dependencias:
 9. Realice la implementación de los 'cascarones' realizados anteriormente.
    Asegúrese que todas las pruebas unitarias creadas en los puntos anteriores
    se ejecutan satisfactoriamente.
+   ##### Original score
+   ```
+   public int calculateScore(int correctCount,int incorrectCount)  throws GameScoreException{
+		if (incorrectCount <0 || correctCount<0) throw new GameScoreException(GameScoreException.NUMERO_NEGATIVO);
+		else{
+			puntaje-=incorrectCount*10;
+			if (puntaje < 0) puntaje=0;
+		}
+		return puntaje;
+	}
+   ```
+   ##### Power score
+   ```
+   public int calculateScore(int correctCount,int incorrectCount) throws GameScoreException{
+		if (incorrectCount <0 || correctCount<0) throw new GameScoreException(GameScoreException.NUMERO_NEGATIVO);
+		else{
+			
+			puntaje-=incorrectCount*8;
+			for (int i=1; i<=correctCount; i++){
+				puntaje+= Math.pow(5,i);
+			}
+			
+			if (puntaje > 500) puntaje=500;
+		
+			if (puntaje < 0) puntaje=0;
+		}
+		
+		
+		return puntaje;
+	}
+   ```
+   
+    ##### Bonus score
+ 
+   ```
+   public int calculateScore(int correctCount,int incorrectCount) throws GameScoreException{
+		if (incorrectCount <0 || correctCount<0) throw new GameScoreException(GameScoreException.NUMERO_NEGATIVO);
+		else{
+			puntaje+=correctCount*10;
+			puntaje-=incorrectCount*5;
+			if (puntaje < 0) puntaje=0;
+		}
+		
+		
+		return puntaje;
+		
+		
+	}
+   ```
 
 10. Al finalizar haga un nuevo commit:
 
@@ -134,11 +241,11 @@ Incorpore el Contenedor Liviano Guice dentro del proyecto:
 
 * Revise las dependencias necesarias en el pom.xml.
 Esta dependencia es la necesaria para poder utiizar de manera correcta google guice 
-![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/evidencia2.PNG)
+![](img/evidencia2.png)
 
 * Modifique la inyección de dependencias utilizando guice en lugar del
   método fábrica..
-  ![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/evidencia3.PNG)
+  ![](img/evidencia3.png)
   Esto se realizo en el metodo main de la clase SwingProject
   
   En la clase HangmanFactoryServices se realizo la inyeccion de dependencias codificando los binds, quedando asi:
@@ -212,14 +319,20 @@ y finalmente en las tres clases de idioma, en sus respectivas clases
 	@Inject
     public French(){    
     }
+	
 
 ```
+private int puntaje;
+	
+	@Inject
+	public PowerBonusScore(){
+		puntaje = 0;	
+
   
-Por ultimo al compilarlo es posible evidenciar que esta funcionall
+Por ultimo al compilarlo es posible evidenciar que esta funcional
 
-![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/funciona.PNG)
-
-![](https://github.com/DonSantiagoS/LAB4CVDS/blob/master/img/funciona2.PNG)
+![](img/funciona.png)
+![](img/funciona2.png)
 
 
 ##### Autores:
