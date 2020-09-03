@@ -28,7 +28,7 @@ import org.junit.Test;
 public class GameScoreTest{
 	//original score
 	@Test
-    public void DeberiaLanzarExcepcion1(){
+    public void DeberiaLanzarExcepcion1() throws GameScoreException {
         GameScore puntaje= new OriginalScore();
 		try{
 		 int score= puntaje.calculateScore(-5,-4);
@@ -38,20 +38,20 @@ public class GameScoreTest{
        }
     }
 	@Test
-    public void DeberiaCalcularPuntaje1(){
+    public void DeberiaCalcularPuntaje1() throws GameScoreException{
 		GameScore puntaje= new OriginalScore();
         int score= puntaje.calculateScore(2,5);
-        Assert.assertEquals(puntaje,50);
+        Assert.assertEquals(score,50);
     }
 	@Test
-    public void DeberiaCalcularPuntaje2(){
+    public void DeberiaCalcularPuntaje2() throws GameScoreException{
 		GameScore puntaje= new OriginalScore();
         int score= puntaje.calculateScore(1,11);
-        Assert.assertEquals(puntaje,0);
+        Assert.assertEquals(score,0);
     }
 	//bonus score
 	@Test
-    public void DeberiaLanzarExcepcion2(){
+    public void DeberiaLanzarExcepcion2() throws GameScoreException{
         GameScore puntaje= new BonusScore();
 		try{
 		 int score= puntaje.calculateScore(-1,-9);
@@ -62,22 +62,22 @@ public class GameScoreTest{
       
     }
 	@Test
-    public void DeberiaCalcularPuntaje3(){
+    public void DeberiaCalcularPuntaje3() throws GameScoreException{
 		GameScore puntaje= new BonusScore();
         int score= puntaje.calculateScore(3,5);
-        Assert.assertEquals(puntaje,5);
+        Assert.assertEquals(score,5);
     }
 	@Test
-    public void DeberiaCalcularPuntaje4(){
+    public void DeberiaCalcularPuntaje4() throws GameScoreException{
 		GameScore puntaje= new BonusScore();
         int score= puntaje.calculateScore(0,2);
-        Assert.assertEquals(puntaje, 0);
+        Assert.assertEquals(score, 0);
     }
 	
 	
 	//power score
 	@Test
-    public void DeberiaLanzarExcepcion3(){
+    public void DeberiaLanzarExcepcion3() throws GameScoreException{
         GameScore puntaje= new PowerScore();
 		try{
 		 int score= puntaje.calculateScore(-2,-2);
@@ -88,21 +88,21 @@ public class GameScoreTest{
       
     }
 	@Test
-    public void DeberiaCalcularPuntaje5(){
+    public void DeberiaCalcularPuntaje5() throws GameScoreException{
 		GameScore puntaje= new PowerScore();
         int score= puntaje.calculateScore(2,3);
-        Assert.assertEquals(puntaje,50);
+        Assert.assertEquals(score,6);
     }
 	@Test
-    public void DeberiaCalcularPuntaje6(){
+    public void DeberiaCalcularPuntaje6() throws GameScoreException{
 		GameScore puntaje= new PowerScore();
         int score= puntaje.calculateScore(4,2);
-        Assert.assertEquals(puntaje,764);
+        Assert.assertEquals(score,500);
     }
 	@Test
-    public void DeberiaCalcularPuntaje7(){
+    public void DeberiaCalcularPuntaje7() throws GameScoreException{
 		GameScore puntaje= new PowerScore();
         int score= puntaje.calculateScore(0,5);
-        Assert.assertEquals(puntaje,0);
+        Assert.assertEquals(score,0);
     }
 }
