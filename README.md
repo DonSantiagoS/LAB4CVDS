@@ -1,8 +1,9 @@
-### Escuela Colombiana de Ingeniería
-#### Andres Cubillos
-#### Santiago Buitrago
 
-### Procesos de Desarrollo de Software
+# **Laboratorio N°4**
+## **CVDS-1**
+### **Ciclos de Vida del Desarrollo de Software**
+
+![](https://github.com/DonSantiagoS/LAB2CVDS/blob/master/Imagenes/Logo.png)
 
 ### Desarrollo Dirigido por Pruebas + DIP + DI + Contenedores Livianos
 
@@ -44,7 +45,13 @@ principio de inversión de dependencias:
 
 ### Parte I
 
+1. Clone el proyecto (no lo descargue!).
 
+```
+	git clone https://github.com/PDSW-ECI/LigthwayContainer_DependencyInjection_Hangman.git	
+```
+
+![](img/evidencia1.png)
    
 2. A partir del código existente, se implementa sólo los cascarones del
    modelo antes indicado.
@@ -80,7 +87,9 @@ principio de inversión de dependencias:
    comentarios iniciales, especifique las clases de equivalencia para
    las tres variantes de GameScore, e identifique
    condiciones de frontera. 
-
+   
+   ![](img/clasesEquivalencia.PNG)
+   
 7. Para cada clase de equivalencia y condición de frontera, implemente
    una prueba utilizando JUnit.
 
@@ -124,19 +133,104 @@ En este taller se va a utilizar un contenedor liviano ([GoogleGuice](https://git
 Incorpore el Contenedor Liviano Guice dentro del proyecto:
 
 * Revise las dependencias necesarias en el pom.xml.
+Esta dependencia es la necesaria para poder utiizar de manera correcta google guice 
+![](img/evidencia2.png)
+
 * Modifique la inyección de dependencias utilizando guice en lugar del
   método fábrica..
-* Configure la aplicación de manera que desde el programa SwingProject
-  NO SE CONSTRUYA el Score directamente, sino a través de Guice, asi
-  mismo como las otras dependencias que se están inyectando mediante
-  la fabrica.
-* Mediante la configuración de la Inyección de
-  Dependencias se pueda cambiar el comportamiento del mismo, por
-  ejemplo:
-	* Utilizar el esquema OriginalScore.
-	* Utilizar el esquema BonusScore.
-	* Utilizar el idioma francés.
-    * Utilizar el diccionario francés.
-	* etc...
-* Para lo anterior, [puede basarse en el ejemplo dado como
-  referencia](https://github.com/PDSW-ECI/LightweighContainers_DepenendecyInjectionIntro-WordProcessor).
+  ![](img/evidencia3.png)
+  Esto se realizo en el metodo main de la clase SwingProject
+  
+  En la clase HangmanFactoryServices se realizo la inyeccion de dependencias codificando los binds, quedando asi:
+
+```
+import hangman.model.Language;
+import hangman.model.dictionary.HangmanDictionary;
+import hangman.model.dictionary.FrenchDictionaryDataSource;
+import hangman.model.dictionary.EnglishDictionaryDataSource;
+import hangman.view.HangmanNoviolentoPanel;
+import hangman.view.HangmanPanel;
+import hangman.model.GameScore;
+import hangman.model.OriginalScore;
+import hangman.view.HangmanStickmanPanel;
+
+public class HangmanFactoryServices extends com.google.inject.AbstractModule {
+
+    @Override
+    protected void configure() {
+        /* Guice dependency injection */
+        bind(GameScore.class).to(OriginalScore.class);
+		bind(Language.class).to(English.class);
+		bind(HangmanDictionary.class).to(EnglishDictionaryDataSource.class);
+		bind(HangmanPanel.class).to(HangmanStickmanPanel.class);
+    }
+
+}
+``` 
+
+Adicionalmente es necesario modificar los comportamientos para que tuviera sentido dichas inyecciones
+
+En OriginalScore
+``` 
+	private int puntaje;
+	@Inject
+	public OriginalScore(){
+		puntaje = 100;	
+	}
+``` 
+
+En BonusScore
+``` 
+	private int puntaje;
+	
+	@Inject
+	public BonusScore(){
+            puntaje = 0;	
+	}
+``` 
+
+En PowerScore
+``` 
+private int puntaje;
+	
+	@Inject
+	public PowerBonusScore(){
+		puntaje = 0;	
+	}
+``` 
+
+y finalmente en las tres clases de idioma, en sus respectivas clases
+```
+	@Inject
+    public Spanish(){    
+    }
+
+	@Inject
+    public English(){    
+    }	
+	
+	@Inject
+    public French(){    
+    }
+	
+
+```
+private int puntaje;
+	
+	@Inject
+	public PowerBonusScore(){
+		puntaje = 0;	
+
+  
+Por ultimo al compilarlo es posible evidenciar que esta funcional
+
+![](img/funciona.png)
+![](img/funciona2.png)
+
+
+##### Autores:
+ * Santiago Buitrago
+ * Andres Cubillos
+
+[1]:https://maven.apache.org/
+
