@@ -1,5 +1,5 @@
 package src.test;
-import src.main.java.hangman.model.*;
+import hangman.model.*;
 import org.junit.Assert;
 import org.junit.Test;
 /**
@@ -31,39 +31,30 @@ public class GameScoreTest{
     public void DeberiaLanzarExcepcion1(){
         GameScore puntaje= new OriginalScore();
 		try{
-		 puntaje.calculateScore(-5,-4);
+		 int score= puntaje.calculateScore(-5,-4);
          int fail= 500/0;
 		 }
       catch(Exception ex){
        }
-      
     }
 	@Test
     public void DeberiaCalcularPuntaje1(){
 		GameScore puntaje= new OriginalScore();
-        puntaje.calculateScore(2,5);
-        Assert.assertTrue(puntaje== 50);
+        int score= puntaje.calculateScore(2,5);
+        Assert.assertEquals(puntaje,50);
     }
 	@Test
     public void DeberiaCalcularPuntaje2(){
 		GameScore puntaje= new OriginalScore();
-        puntaje.calculateScore(1,11);
-        Assert.assertTrue(puntaje== 0);
+        int score= puntaje.calculateScore(1,11);
+        Assert.assertEquals(puntaje,0);
     }
-	
-	
-	
-	
-	
-	
-	
-	
 	//bonus score
 	@Test
     public void DeberiaLanzarExcepcion2(){
         GameScore puntaje= new BonusScore();
 		try{
-		 puntaje.calculateScore(-1,-9);
+		 int score= puntaje.calculateScore(-1,-9);
          int fail= 500/0;
 		 }
       catch(Exception ex){
@@ -73,14 +64,14 @@ public class GameScoreTest{
 	@Test
     public void DeberiaCalcularPuntaje3(){
 		GameScore puntaje= new BonusScore();
-        puntaje.calculateScore(3,5);
-        Assert.assertTrue(puntaje== 5);
+        int score= puntaje.calculateScore(3,5);
+        Assert.assertEquals(puntaje,5);
     }
 	@Test
     public void DeberiaCalcularPuntaje4(){
 		GameScore puntaje= new BonusScore();
-        puntaje.calculateScore(0,2);
-        Assert.assertTrue(puntaje== 0);
+        int score= puntaje.calculateScore(0,2);
+        Assert.assertEquals(puntaje, 0);
     }
 	
 	
@@ -89,7 +80,7 @@ public class GameScoreTest{
     public void DeberiaLanzarExcepcion3(){
         GameScore puntaje= new PowerScore();
 		try{
-		 puntaje.calculateScore(-2,-2);
+		 int score= puntaje.calculateScore(-2,-2);
          int fail= 500/0;
 		 }
       catch(Exception ex){
@@ -99,19 +90,19 @@ public class GameScoreTest{
 	@Test
     public void DeberiaCalcularPuntaje5(){
 		GameScore puntaje= new PowerScore();
-        puntaje.calculateScore(2,3);
-        Assert.assertTrue(puntaje==50 );
+        int score= puntaje.calculateScore(2,3);
+        Assert.assertEquals(puntaje,50);
     }
 	@Test
     public void DeberiaCalcularPuntaje6(){
 		GameScore puntaje= new PowerScore();
-        puntaje.calculateScore(4,2);
-        Assert.assertTrue(puntaje== 764);
+        int score= puntaje.calculateScore(4,2);
+        Assert.assertEquals(puntaje,764);
     }
 	@Test
     public void DeberiaCalcularPuntaje7(){
 		GameScore puntaje= new PowerScore();
-        puntaje.calculateScore(0,5);
-        Assert.assertTrue(puntaje== 0);
+        int score= puntaje.calculateScore(0,5);
+        Assert.assertEquals(puntaje,0);
     }
 }
