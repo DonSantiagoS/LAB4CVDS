@@ -332,8 +332,8 @@ private int puntaje;
   
 Por ultimo al compilarlo es posible evidenciar que esta funcional
 
-![](img/funciona.png)
-![](img/funciona2.png)
+![](img/funciona.PNG)
+![](img/funciona2.PNG)
 
 
 ##### Autores:
